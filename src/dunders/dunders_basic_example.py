@@ -21,6 +21,20 @@ class MyString:
             return MyString(left_op.replace(right_op, '', 1))
         return self.copy()
 
+    def __mul__(self, other):
+        left_op = self.string.decode('utf-8')
+        right_op = other.string.decode('utf-8')
+        return MyString(left_op * len(right_op))
+
+    def __truediv__(self, other):
+        left_op = self.string.decode('utf-8')
+        right_op = other.string.decode('utf-8')
+        return len(left_op) / len(right_op)
+
+    def __len__(self):
+        words = self.string.decode('utf-8').split(' ')
+        return len(words)
+
     def copy(self):
         """make a shallow copy."""
         return MyString(self.string.decode('utf-8'))
@@ -34,4 +48,15 @@ if __name__ == '__main__':
     print(my_new_string - my_string)
     my_last_string = my_string.copy()
     print(my_string is my_last_string)
+
+    print("---")
+    my_second_string = MyString('world!')
+    print(my_string)
+    print(my_second_string)
+    print(my_string * my_second_string)
+    print(my_string / my_second_string)
+
+    my_third_string = MyString('hello there')
+    print(len(my_third_string))
+
 
