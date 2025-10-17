@@ -1,4 +1,4 @@
-def my_decorator(n):
+def my_decorator(n:int = 1):
     def inner_func(f):
         def wrapper():
             for _ in range(n): print("Before function")
